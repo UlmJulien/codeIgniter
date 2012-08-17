@@ -21,10 +21,16 @@ class SessionTest extends CI_Controller {
          $data['Last'] = $this->session->userdata('last_activity');
          
          $this->session->set_userdata('pseudo', 'Arthur');      
-         $data['pseudo'] = $this->session->userdata('pesudo');
+         $data['pseudo'] = $this->session->userdata('pseudo');
          
          $this->load->view('sessionTest/infoSession', $data);
          
+    }
+    
+    public function destroySession () {
+        $this->session->sess_destroy();
+        
+        redirect();
     }
    
 }
