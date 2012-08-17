@@ -8,15 +8,23 @@ class SessionTest extends CI_Controller {
         //$this->load->library('session');
     }
     
-    public function infosSession () {
+    public function index() {
+        $this->infoSession ();
+    }
+    
+    public function infoSession () {
         
          $data = array();
          $data['id'] = $this->session->userdata('session_id');
-         $data['ip'] = $this->session->userdata('ip_adress');
+         $data['ip'] = $this->session->userdata('ip_address');
          $data['browser'] = $this->session->userdata('user_agent');
          $data['Last'] = $this->session->userdata('last_activity');
          
+         $this->session->set_userdata('pseudo', 'Arthur');      
+         $data['pseudo'] = $this->session->userdata('pesudo');
+         
          $this->load->view('sessionTest/infoSession', $data);
+         
     }
    
 }
